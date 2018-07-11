@@ -7,6 +7,7 @@
 module.exports = (app) => {
   const { router, controller } = app
   router.get('/api/cook/:id', controller.cook.index)
+  router.get('/api/cook_detail/:id', controller.cookDetail.index)
   router.get('/api/categores', controller.categores.index)
   router.get('/api/banner', controller.banner.index)
   router.get('/', controller.home.index)

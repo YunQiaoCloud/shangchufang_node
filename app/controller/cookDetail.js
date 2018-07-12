@@ -23,14 +23,9 @@ class CookDetailController extends Controller {
     }
   }
 
-  traverseCookDetail(id) {
-    const array = Object.keys(cookDetailCache)
-    const length = array.length
-
-    for (let i = 0; i < length; i += 1) {
-      if (array[i].id === id) {
-        return array[i]
-      }
+  getCookDetail(id) {
+    if (cookDetailCache[`id${id}`]) {
+      return cookDetailCache[`id${id}`]
     }
 
     // 如果没找到，去上一级分类找
@@ -40,7 +35,7 @@ class CookDetailController extends Controller {
   async index() {
     const key = 'f762c03a2498c0ca3525701cfef60e23&cid'
     const id = this.ctx.params.id
-    let data = this.traverseCookDetail(id)
+    let data = this.getCookDetail(id)
 
     // 判断缓存有没有信息
     if (!data) {

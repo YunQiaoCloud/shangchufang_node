@@ -35,6 +35,7 @@ class CookDetailController extends Controller {
   async index() {
     const key = 'f762c03a2498c0ca3525701cfef60e23&cid'
     const id = this.ctx.params.id
+
     let data = this.getCookDetail(id)
 
     // 判断缓存有没有信息

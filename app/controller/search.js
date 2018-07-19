@@ -5,7 +5,6 @@ class SearchController extends Controller {
   async index() {
     // 获取搜索内容
     const q = this.ctx.query.q
-    console.log(q)
     this.ctx.body = [cookDetailCache.id6411]
   }
 }

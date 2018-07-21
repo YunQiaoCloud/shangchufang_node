@@ -9,10 +9,7 @@ class categoresController extends Controller {
     const list = categoryData[0].list
     const shufflelist = _.shuffle(list)
 
-    this.ctx.body = {
-      recommend: shufflelist.slice(0, 4), // 推荐菜
-      category: shufflelist.slice(4) // 菜系（不包括推荐部分）
-    }
+    this.ctx.body = shufflelist
   }
 }
 

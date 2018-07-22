@@ -11,5 +11,11 @@ module.exports = (app) => {
   router.get('/api/v1/cook_detail/:id', controller.cookDetail.index)
   router.get('/api/v1/categores', controller.categores.index)
   router.get('/api/v1/banner', controller.banner.index)
+
+  // 交由前端处理
+  router.get('/detail/:id', controller.home.index)
+  router.get('/search', controller.home.index)
+  router.get('/list', controller.home.index)
+  router.get('/collect', controller.home.index)
   router.get('/', controller.home.index)
 }

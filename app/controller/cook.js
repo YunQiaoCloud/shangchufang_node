@@ -16,8 +16,11 @@ class CookController extends Controller {
     if (cookCache[`cid${cid}`]) {
       data = cookCache[`cid${cid}`]
     } else {
-      const res = await axios.get(`http://apis.juhe.cn/cook/index?key=${key}&cid=${cid}`)
+      const res = await axios.get(`https://apis.juhe.cn/cook/index?key=${key}&cid=${cid}`)
       data = res.data.result.data
+
+      // http 转为 https
+      data = JSON.stringify(data).replace(/http:/g, 'https:')
       cookCache[`cid${cid}`] = data
       fs.writeFile(path.join(__dirname, '../data/cook_cache.json'), JSON.stringify(cookCache, null, 2), 'utf8')
     }

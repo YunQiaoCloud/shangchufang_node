@@ -40,8 +40,11 @@ class CookDetailController extends Controller {
 
     // 判断缓存有没有信息
     if (!data) {
-      const res = await axios.get(`http://apis.juhe.cn/cook/queryid?key=${key}&id=${id}`)
+      const res = await axios.get(`https://apis.juhe.cn/cook/queryid?key=${key}&id=${id}`)
       data = res.data.result.data[0]
+
+      // http 转为 https
+      data = JSON.stringify(data).replace(/http:/g, 'https:')
 
       // 存入缓存
       cookDetailCache[`id${id}`] = data
